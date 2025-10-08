@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cartinha para você ❤️</title>
+
+  <!-- Importando fontes do Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Caixinha da carta */
+    .container {
+      background: #ffffffcc;
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      max-width: 600px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      color: #ff4b5d;
+      font-family: 'Great Vibes', cursive;
+      font-size: 42px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #444;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .heart {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      color: #ff4b5d;
+      transition: transform 0.3s ease;
+      margin-top: 20px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      background-color: #ffe3e8;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+
+    .heart:hover {
+      transform: scale(1.1);
+    }
+
+    .hidden-message {
+      display: none;
+      margin-top: 20px;
+      font-size: 20px;
+      color: #ff4b5d;
+      font-family: 'Poppins', sans-serif;
+      font-weight: bold;
+    }
+
+    /* ❤️ corações caindo */
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hearts span {
+      position: absolute;
+      top: -50px;
+      color: #ff4b5d;
+      font-size: 24px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- corações no fundo -->
+  <div class="hearts" id="hearts"></div>
+
+  <div class="container">
+    <h1 id="titulo">Para o amor da minha vida 💕</h1>
+
+    <div id="conteudo-inicial">
+      <p>
+        Em meio dessa carta eu abro meu coração pra você <br>
+        Espero que goste... ❤️
+      </p>
+      <button class="heart" onclick="showMessage()">Clique aqui ❤️</button>
+    </div>
+
+    <div class="hidden-message" id="secretMessage">
+      Muito obrigado por existir!!! 😍  
+      <br><br>
+      Eu te amo muito ❤️
+    </div>
+  </div>
+
+  <script>
+    function showMessage() {
+      document.getElementById("conteudo-inicial").style.display = "none";
+      document.getElementById("titulo").style.display = "none";
+      document.getElementById("secretMessage").style.display = "block";
+    }
+
+    // gera corações animados
+    const heartsContainer = document.getElementById("hearts");
+    function createHeart() {
+      const heart = document.createElement("span");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 20 + "px";
+      heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+      heartsContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
