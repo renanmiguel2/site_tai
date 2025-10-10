@@ -3,24 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Cartinha para você ❤️</title>
-
-  <!-- Importando fontes do Google -->
+  
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
   <style>
     body {
       margin: 0;
-      padding: 0;
+      padding: 40px 20px;
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+      min-height: 100vh;
+      overflow-y: auto;
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
+      align-items: flex-start;
     }
 
-    /* Caixinha da carta */
     .container {
       background: #ffffffcc;
       border-radius: 20px;
@@ -42,22 +39,19 @@
       font-size: 18px;
       line-height: 1.6;
       color: #444;
-      font-family: 'Poppins', sans-serif;
     }
 
     .heart {
-      background: none;
+      background-color: #ffe3e8;
       border: none;
       cursor: pointer;
-      font-size: 20px;
+      font-size: 18px;
       color: #ff4b5d;
-      transition: transform 0.3s ease;
-      margin-top: 20px;
       padding: 10px 20px;
       border-radius: 10px;
-      background-color: #ffe3e8;
-      font-family: 'Poppins', sans-serif;
       font-weight: 600;
+      margin-top: 20px;
+      transition: transform 0.3s ease;
     }
 
     .heart:hover {
@@ -67,13 +61,13 @@
     .hidden-message {
       display: none;
       margin-top: 20px;
-      font-size: 20px;
+      font-size: 18px;
       color: #ff4b5d;
-      font-family: 'Poppins', sans-serif;
-      font-weight: bold;
+      font-weight: 400;
+      text-align: left;
+      white-space: pre-wrap;
     }
 
-    /* ❤️ corações caindo */
     .hearts {
       position: fixed;
       top: 0;
@@ -94,36 +88,32 @@
     }
 
     @keyframes fall {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
   </style>
 </head>
 <body>
-  <!-- corações no fundo -->
   <div class="hearts" id="hearts"></div>
 
   <div class="container">
     <h1 id="titulo">Para o amor da minha vida 💕</h1>
-
     <div id="conteudo-inicial">
-      <p>
-        Em meio dessa carta eu abro meu coração pra você <br>
-        Espero que goste... ❤️
-      </p>
+      <p>Em meio dessa carta eu abro meu coração pra você <br> Espero que goste... ❤️</p>
       <button class="heart" onclick="showMessage()">Clique aqui ❤️</button>
     </div>
-
     <div class="hidden-message" id="secretMessage">
-      Muito obrigado por existir!!! 😍  
-      <br><br>
-      Eu te amo muito ❤️
+      Oiii minha princesa, infelizmente eu não posso te dar um abraço ou nenhum tipo de contato físico, mas mesmo com a gente muito distante um do outro eu quero te mostrar que nossos corações podem estar perto um do outro, quero te mostrar que independente do que aconteça na sua vida tem um homem que é louco por você que até atravessaria a antártida a pé pra tirar um sorrisinho do seu rosto, mas eu sei que você não iria deixar porque você não vai deixar eu andar sem camiseta por aí🙄
+
+      Quero que todos os dias que você estiver mal entre nesse site e leia isso e quando estiver triste, escrever nas caixas que eu fiz pra você. Você é a mulher mais perfeita do mundo, eu amo tudo em você. Óbvio que você tem seus defeitos assim como todo ser humano tem, mas eu te amo do jeitinho que você é. Eu sou apaixonado por cada detalhezinho seu, sua voz me encanta, quando você me xinga ou brinca eu me sinto o homem mais feliz do mundo, e quando você está triste eu quero te mostrar o quanto você já me deixou feliz.
+
+      Já perdi as contas de quantas vezes você me mandava alguma mensagem e alguém me perguntava o porquê eu estava rindo pro celular, mas a verdade é que é porque eu te amo. Eu sempre vou te amar, eu quero passar cada segundinho da minha vida com você e sim eu escrevi isso tudo chorando🥹
+
+      Mas enfim acho que eu já falei muito né, mas eu só quero que saiba de uma coisa:
+      Eu te amo 🫶🏽🤍😍
+
+      <br><br>Muito obrigado por existir!!! ❤️<br><br>
+      <a href="desabafo.html"><button class="heart">Ir para o Cantinho do Desabafo 📝</button></a>
     </div>
   </div>
 
@@ -134,7 +124,6 @@
       document.getElementById("secretMessage").style.display = "block";
     }
 
-    // gera corações animados
     const heartsContainer = document.getElementById("hearts");
     function createHeart() {
       const heart = document.createElement("span");
@@ -149,3 +138,4 @@
   </script>
 </body>
 </html>
+        

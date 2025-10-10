@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cantinho do Desabafo 📝</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #c3cfe2, #f5f7fa);
+    }
+    h1 {
+      color: #ff4b5d;
+      font-size: 32px;
+      text-align: center;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-family: 'Poppins', sans-serif;
+      resize: none;
+      margin-top: 20px;
+    }
+    .heart {
+      background-color: #ffe3e8;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: #ff4b5d;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      margin-top: 20px;
+      transition: transform 0.3s ease;
+    }
+    .heart:hover {
+      transform: scale(1.05);
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 30px;
+    }
+    ul li {
+      background: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cantinho do Desabafo 📝</h1>
+  <textarea id="noteInput" placeholder="Escreva aqui o que está sentindo..."></textarea>
+  <br>
+  <button class="heart" onclick="saveNote()">Salvar</button>
+
+  <h3 style="color:#ff4b5d;">Suas anotações salvas:</h3>
+  <ul id="notesUl"></ul>
+
+  <script>
+    function saveNote() {
+      const input = document.getElementById("noteInput").value.trim();
+      if (input) {
+        const notes = JSON.parse(localStorage.getItem("notas")) || [];
+        notes.push(input);
+        localStorage.setItem("notas", JSON.stringify(notes));
+        document.getElementById("noteInput").value = "";
+        renderNotes();
+      }
+    }
+
+    function renderNotes() {
+      const notes = JSON.parse(localStorage.getItem("notas")) || [];
+      const notesUl = document.getElementById("notesUl");
+      notesUl.innerHTML = "";
+      notes.forEach((note, index) => {
+        const li = document.createElement("li");
+        li.textContent = note.length > 50 ? note.substring(0, 50) + "..." : note;
+        li.onclick = () => {
+          localStorage.setItem("notaSelecionada", index);
+          window.location.href = "leitura.html";
+        };
+        notesUl.appendChild(li);
+      });
+    }
+
+    renderNotes();
+  </script>
+</body>
+</html>
